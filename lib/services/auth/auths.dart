@@ -1,5 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Auths{
@@ -8,7 +9,7 @@ class Auths{
   
 
 // SignUp user Function with FirebaseAuth
-  Future signUp(String email, String password) async{
+  Future signUp({@required String email, @required String password, @required String fullname,}) async{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
@@ -22,7 +23,7 @@ class Auths{
 
 
 //  SignIn User Function with FirebaseAuth
-  Future signIn(String email, String password) async{
+  Future signIn({String email, String password}) async{
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
@@ -71,5 +72,10 @@ class Auths{
       print(e.toString());
       return null;
     }
+  }
+
+  Future <bool> isUserAvailable()async{
+    var user = await _auth.currentUser();
+    return user != null;
   }
 }
