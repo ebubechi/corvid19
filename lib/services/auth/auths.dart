@@ -1,9 +1,12 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Auths{
   FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn _gAuth = GoogleSignIn();
+  
+
 // SignUp user Function with FirebaseAuth
   Future signUp(String email, String password) async{
     try{
@@ -16,8 +19,9 @@ class Auths{
       return null;
     } 
   }
-//  SignIn User Function with FirebaseAuth
 
+
+//  SignIn User Function with FirebaseAuth
   Future signIn(String email, String password) async{
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
