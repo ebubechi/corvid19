@@ -1,6 +1,7 @@
 import 'package:corvid/services/auth/auths.dart';
 import 'package:corvid/services/other/navigation_service.dart';
-import 'package:corvid/services/reg/user_registeration.dart';
+import 'package:corvid/services/reg/user_profile_update.dart';
+// import 'package:corvid/services/reg/user_registeration.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;
