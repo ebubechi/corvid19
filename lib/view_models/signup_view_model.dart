@@ -1,6 +1,6 @@
 import 'package:corvid/constants/routes.dart';
 import 'package:corvid/locator.dart';
-import 'package:corvid/models/user_model.dart';
+// import 'package:corvid/models/user_model.dart';
 import 'package:corvid/services/auth/auths.dart';
 import 'package:corvid/services/other/navigation_service.dart';
 import 'package:corvid/services/reg/user_profile_update.dart';
@@ -8,7 +8,7 @@ import 'package:corvid/view_models/base_model.dart';
 
 class SignUpVIewModel extends BaseModel{
   final Auths auth = locator<Auths>();
-  final ProfileData part = locator<ProfileData>();
+  // final ProfileData part = locator<ProfileData>();
   final NavigationService naveegate = locator<NavigationService>();
 
 

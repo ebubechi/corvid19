@@ -1,5 +1,6 @@
 // import 'package:corvid/UI/authUI/signin.dart';
 // import 'package:corvid/UI/authUI/signup.dart';
+import 'package:corvid/UI/authUI/signin.dart';
 import 'package:corvid/UI/general/startUpView.dart';
 import 'package:corvid/locator.dart';
 import 'package:corvid/services/other/navigation_service.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: StartUp(),
+      home: SignIn(),
       onGenerateRoute: generateRoute,
       navigatorKey: locator<NavigationService>().navigationKey,
     );
