@@ -12,9 +12,17 @@ class UpdateProfileViewmodel extends BaseModel{
   final ProfileData update = locator<ProfileData>();
   final NavigationService naveegate = locator<NavigationService>();
 
-  Future updateUser(username,sex,country,address)async{
+  String _selectedgender = 'Sex';
+  String get selectedGender => _selectedgender;
+
+  void setSelectedGender(dynamic gender){
+    _selectedgender = gender;
+    notifyListeners();
+  }
+
+  Future updateUser(username,country,address)async{
     setBusy(true);
-     var rem = await update.profileUpdate(User(address: address,username: username,sex: sex,country: country));
+     var rem = await update.profileUpdate(User(address: address,username: username,sex:_selectedgender,country: country));
     setBusy(false);
     if (rem is bool){
       if(rem){
