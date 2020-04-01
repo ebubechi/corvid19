@@ -1,11 +1,19 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:corvid/locator.dart';
+import 'package:corvid/models/user_model.dart';
+import 'package:corvid/services/reg/user_profile_update.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Auths{
   FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn _gAuth = GoogleSignIn();
+  final ProfileData partUpdate = locator<ProfileData>();
+  
+
 // SignUp user Function with FirebaseAuth
-  Future signUp(String email, String password) async{
+  Future signUp({@required String email, @required String password, @required String fullname,}) async{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
@@ -16,12 +24,14 @@ class Auths{
       return null;
     } 
   }
-//  SignIn User Function with FirebaseAuth
 
-  Future signIn(String email, String password) async{
+
+//  SignIn User Function with FirebaseAuth
+  Future signIn({String email, String password, String fullname}) async{
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+      await partUpdate.userProfile(User( id: result.user.uid, fullname: fullname));
       return user != null;
     }
     catch(e){
@@ -67,5 +77,10 @@ class Auths{
       print(e.toString());
       return null;
     }
+  }
+
+  Future <bool> isUserAvailable()async{
+    var user = await _auth.currentUser();
+    return user != null;
   }
 }
