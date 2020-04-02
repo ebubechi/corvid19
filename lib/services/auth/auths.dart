@@ -29,7 +29,7 @@ class Auths{
 
 //  SignIn User Function with API
   Future signIn({String email, String password, String username}) async{
-    String signinapi = 'https://decorona.herokuapp.com/api/account/authentication/login/';
+    String signinapi = 'https://decorona.herokuapp.com/api/account/login';
     final signin = await http.post(signinapi, body:jsonEncode(
       User(
         email: email,
@@ -38,7 +38,7 @@ class Auths{
         )
     ));
     if (signin.statusCode == 201){
-      return "Signed In Successfully";
+      print ("Signed In Successfully");
     }
     return "Sign in Failure";
   }

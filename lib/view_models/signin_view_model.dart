@@ -9,9 +9,9 @@ class SignInVIewModel extends BaseModel{
   final NavigationService naveegate = locator<NavigationService>();
 
 
-  Future signUp(email,password)async{
+  Future signIn(email,password,username)async{
     setBusy(true);
-    var signing = await auth.signIn(email: email,password: password);
+    var signing = await auth.signIn(email: email,password: password, username: username);
     setBusy(false);
     if (signing is bool){
       if(signing){

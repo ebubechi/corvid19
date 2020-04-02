@@ -7,6 +7,7 @@ import 'package:provider_architecture/provider_architecture.dart';
 class SignIn extends StatelessWidget {
 
   final emailcontroller = TextEditingController();
+  final usernamecontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,11 @@ class SignIn extends StatelessWidget {
               SizedBox(height: 150,),
               Container(alignment: Alignment.topLeft,child: Text('Sign In',style:TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.green[400])),),
               SizedBox(height: 30,),
+              InputField(controller: usernamecontroller,placeholder: 'Username',),
+              SizedBox(height: 15,),
               InputField(controller: emailcontroller,placeholder: 'Email',),
               SizedBox(height: 15,),
-              InputField(controller: passwordcontroller,placeholder: 'Password',),
+              InputField(controller: passwordcontroller,placeholder: 'Password', password: true,),
               SizedBox(height: 10,),
               Row(
                 mainAxisSize: MainAxisSize.min,
@@ -30,8 +33,10 @@ class SignIn extends StatelessWidget {
                 children: <Widget>[
                   Buttons(
                     title: 'Sign In',
-                    // busy: model.busy,
-                    onPressed: (){},
+                     busy: model.busy,
+                    onPressed: (){
+                      model.signIn(emailcontroller.text, passwordcontroller.text, usernamecontroller.text);
+                    },
                   ),
                 ],
               )
