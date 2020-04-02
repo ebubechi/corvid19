@@ -5,16 +5,18 @@ class User{
   final String username;
   final String sex;
   final String password;
+  final String conpassword;
   final String email;
   final String country;
 
-  User({this.address,this.id, this.fullname, this.username, this.sex, this.password, this.email, this.country});
+  User({this.address,this.id, this.fullname, this.username, this.sex, this.password, this.conpassword, this.email, this.country});
   User.fromData(Map<String,dynamic> data)
     :   id = data["id"],
         fullname = data["fullname"],
         username = data["username"],
         sex = data["sex"],
         password = data["password"],
+        conpassword = data["conpassword"],
         email = data["email"],
         country = data["country"],
         address = data["address"];
@@ -28,7 +30,8 @@ class User{
       'sex': sex,
       'password':password,
       'country':country,
-      'address': address
+      'address': address,
+      'conpassword':conpassword
     };
   }
 }
