@@ -9,6 +9,7 @@ class SignUp extends StatelessWidget {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final usernamecontroller = TextEditingController();
+  final conpasswordcontroller = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,8 @@ class SignUp extends StatelessWidget {
               InputField(controller: emailcontroller,placeholder: 'Email',),
               SizedBox(height: 15,),
               InputField(controller: passwordcontroller,placeholder: 'Password',),
+              SizedBox(height: 15,),
+              InputField(controller: conpasswordcontroller,placeholder: 'Re-Password',),
               SizedBox(height: 15,),
               InputField(controller: usernamecontroller,placeholder: 'Username',),
               SizedBox(height: 10,),
