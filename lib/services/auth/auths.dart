@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:corvid/locator.dart';
+// import 'package:corvid/models/api_response.dart';
 import 'package:corvid/models/user_model.dart';
 import 'package:corvid/services/reg/user_profile_update.dart';
 import 'package:flutter/foundation.dart';
@@ -12,7 +13,7 @@ class Auths{
   final ProfileData partUpdate = locator<ProfileData>();
 
 // SignUp user Function with the API
-  Future signUp({@required String email, @required String password,@required String conpassword, @required String username,}) async{
+  Future<bool>signUp({@required String email, @required String password,@required String conpassword, @required String username,}) async{
     String signupapi = 'https://decorona.herokuapp.com/api/account/authentication/registration/';
     final signup = await http.post(signupapi, body: jsonEncode(User(
       email: email,
@@ -21,15 +22,15 @@ class Auths{
       username: username
     )));
     if (signup.statusCode == 201){
-      return "Sign Up Success";
+      return true;
     }
-    return "Sign Up Failed :(";
+    return null;
   }
 
 
 //  SignIn User Function with API
-  Future signIn({String email, String password, String username}) async{
-    String signinapi = 'https://decorona.herokuapp.com/api/account/authentication/login/';
+  Future <bool>signIn({String email, String password, String username}) async{
+    String signinapi = 'https://decorona.herokuapp.com/api/account/login';
     final signin = await http.post(signinapi, body:jsonEncode(
       User(
         email: email,
@@ -38,9 +39,9 @@ class Auths{
         )
     ));
     if (signin.statusCode == 201){
-      return "Signed In Successfully";
+      return true;
     }
-    return "Sign in Failure";
+    return null;
   }
 
   // Google SignIn 
@@ -85,5 +86,6 @@ class Auths{
   Future <bool> isUserAvailable()async{
   //   var user = await _auth.currentUser();
   //   return user != null;
+  return true;
   }
 }

@@ -12,20 +12,11 @@ class SignUpViewModel extends BaseModel{
   final NavigationService naveegate = locator<NavigationService>();
 
 
-  Future signUp(email,username,password,conpassword)async{
+  Future<void> signUp(email,username,password,conpassword)async{
     setBusy(true);
     var signing = await auth.signUp(email: email,password: password,username: username,conpassword: conpassword);
+    naveegate.navigateTo(HomeViewRoute);
     setBusy(false);
-    if (signing is bool){
-      if(signing){
-        naveegate.navigateTo(HomeViewRoute);
-      }
-      else {
-        return "Nothingness";
-      }
-    }
-    else{
-          return 'I failed you man';
-    }
+    return signing;
   }
 }
